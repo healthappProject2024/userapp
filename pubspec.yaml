@@ -1,0 +1,46 @@
+name: userapp
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  cupertino_icons: ^1.0.8
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.0.0
+  flutter_native_splash: ^2.4.4
+  flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.0.17
+  google_fonts: ^6.2.1
+  mockito: ^5.4.5
+  shared_preferences: ^2.4.0
+  test: ^1.25.14
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/button/
+    - assets/logo/
+
+flutter_native_splash:
+  color: "#CC8FED"
+  image: assets/logo/app_logo.png
+
+  android_12:
+    color: "#CC8FED"
+    branding: assets/logo/app_logo.png
+
+  android: true
+  ios: true
