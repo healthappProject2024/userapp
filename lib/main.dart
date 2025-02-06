@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -6,12 +7,16 @@ import 'package:userapp/features/onboarding/data/local_data_source/local_data_so
 import 'package:userapp/features/onboarding/data/repository/onboarding_repository_impl.dart';
 import 'package:userapp/features/onboarding/domain/usecase/onboarding_usecase.dart';
 import 'package:userapp/features/onboarding/presentation/cubit/onboarding_cubit.dart';
+import 'package:userapp/firebase_options.dart';
 import 'package:userapp/userapp.dart';
 import 'package:userapp/utils/service/local_data_service.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   final pref = await SharedPreferences.getInstance();
+    await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(
     MultiBlocProvider(

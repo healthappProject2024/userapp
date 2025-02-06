@@ -66,7 +66,7 @@ class Login extends StatelessWidget {
 
   Widget _buildLoginButton({required Function() onPressed}) {
     return CommonButton(
-      height: 60.h,
+      height: 53.h,
       width: 315.w,
       isRow: true,
       widget: Row(
@@ -89,7 +89,7 @@ class Login extends StatelessWidget {
   }
 
   Widget _commonSpacing() {
-    return SizedBox(height: 30.h);
+    return SizedBox(height: 20.h);
   }
 }
 
