@@ -51,7 +51,7 @@ class Login extends StatelessWidget {
                 hintText: 'Password',
                 isPasswordBox: true,
                 showPasswordIcon: Icon(CupertinoIcons.eye_slash),
-                validator: PasswordValidator.passwordValidator,
+                // validator: PasswordValidator.passwordValidator,
               ),
               _commonSpacing(),
               _buildLoginButton(
