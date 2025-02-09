@@ -4,10 +4,12 @@ import 'package:userapp/utils/const/app_colors.dart/my_colors.dart';
 
 class CommonTextfield extends StatelessWidget {
   final bool isPasswordBox;
+  final bool isObscureText;
   final String hintText;
   final Widget prefixIcon;
   final Widget? showPasswordIcon;
-  final double width; 
+  final double width;
+  final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
 
   const CommonTextfield({
@@ -16,18 +18,21 @@ class CommonTextfield extends StatelessWidget {
     required this.hintText,
     required this.prefixIcon,
     this.showPasswordIcon,
-    this.width = 315, 
+    this.width = 315,
     this.validator,
+    this.controller,
+    this.isObscureText = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60.h,
-       width: width.w,
+      width: width.w,
       child: TextFormField(
+        controller: controller,
         validator: validator,
-        obscureText: isPasswordBox,
+        obscureText: isObscureText,
         decoration: InputDecoration(
           isDense: true,
           hintText: hintText,
@@ -36,7 +41,7 @@ class CommonTextfield extends StatelessWidget {
             fontSize: 14.sp,
           ),
           prefixIcon: prefixIcon,
-          constraints: BoxConstraints(minHeight: 60.h,maxHeight: 70.h),
+          constraints: BoxConstraints(minHeight: 60.h, maxHeight: 70.h),
           border: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(14.r),

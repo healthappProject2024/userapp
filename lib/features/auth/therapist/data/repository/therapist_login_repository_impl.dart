@@ -14,7 +14,6 @@ class TherapistLoginRepositoryImpl implements TherapistLoginRepository {
     required String email,
     required String password,
   }) async {
-        print("Entred in to repo impl");
     try {
       final therapist = await remoteDataSource.therapistSignIn(email: email, password: password);
       if (therapist != null) {

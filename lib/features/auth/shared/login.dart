@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:userapp/config/theme/text_theme.dart';
 import 'package:userapp/utils/const/asset_helper/icon_helper.dart';
 import 'package:userapp/utils/const/string/app_strings.dart';
 import 'package:userapp/utils/const/validator/email_validator.dart';
 import 'package:userapp/utils/const/validator/password_validator.dart';
+import 'package:userapp/utils/resources/cubit/show_password_cubit.dart';
 import 'package:userapp/utils/resources/widgets/common_button.dart';
 import 'package:userapp/utils/resources/widgets/common_textfield.dart';
 
 class Login extends StatelessWidget {
-
   final Function() loginButtonOnpressed;
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -27,7 +28,7 @@ class Login extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -41,17 +42,31 @@ class Login extends StatelessWidget {
               ),
               _commonSpacing(),
               CommonTextfield(
+                controller: emailController,
                 prefixIcon: Icon(CupertinoIcons.mail),
                 hintText: 'Email',
                 validator: EmailValidator.emailValidator,
               ),
               SizedBox(height: 10.h),
-              CommonTextfield(
-                prefixIcon: Icon(CupertinoIcons.lock),
-                hintText: 'Password',
-                isPasswordBox: true,
-                showPasswordIcon: Icon(CupertinoIcons.eye_slash),
-                // validator: PasswordValidator.passwordValidator,
+              BlocBuilder<ShowPasswordCubit, bool>(
+                builder: (context, obscure) {
+                  return CommonTextfield(
+                    controller: passwordController,
+                    prefixIcon: Icon(CupertinoIcons.lock),
+                    isObscureText: obscure,
+                    hintText: 'Password',
+                    isPasswordBox: true,
+                    showPasswordIcon: IconButton(
+                      icon: Icon(obscure
+                          ? CupertinoIcons.eye_slash
+                          : CupertinoIcons.eye),
+                      onPressed: () => context
+                          .read<ShowPasswordCubit>()
+                          .showPasswordClicked(),
+                    ),
+                    validator: PasswordValidator.passwordValidator,
+                  );
+                },
               ),
               _commonSpacing(),
               _buildLoginButton(
@@ -92,5 +107,3 @@ class Login extends StatelessWidget {
     return SizedBox(height: 20.h);
   }
 }
-
-

@@ -9,7 +9,6 @@ class TherapistLoginUseCase {
   TherapistLoginUseCase({required this.repository});
 
   Future<Either<Failures, Therapist>> call({required String email, required String password}) {
-    print("Entred in to usecase");
     return repository.therapistLogin(email: email, password: password);
   }
 }

@@ -15,6 +15,7 @@ import 'package:userapp/features/onboarding/domain/usecase/onboarding_usecase.da
 import 'package:userapp/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:userapp/firebase_options.dart';
 import 'package:userapp/userapp.dart';
+import 'package:userapp/utils/resources/cubit/show_password_cubit.dart';
 import 'package:userapp/utils/service/local_data_service.dart';
 
 void main() async {
@@ -41,12 +42,15 @@ void main() async {
           )..checkOnboardingStatus(),
         ),
         BlocProvider(
+          create: (ctx) => ShowPasswordCubit(),
+        ),
+        BlocProvider(
           create: (ctx) => TherapistLoginBloc(
             therapistLoginUseCase: TherapistLoginUseCase(
               repository: TherapistLoginRepositoryImpl(
                 remoteDataSource: TherapistRemoteDataSourceImpl(
-                  auth: auth,
-                  db: db,
+                  auth,
+                  db,
                 ),
               ),
             ),
