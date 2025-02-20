@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:userapp/config/route/route_name.dart';
 import 'package:userapp/features/therapist/home/presentation/widget/userbox.dart';
 import 'package:userapp/utils/resources/widgets/common_button.dart';
 import 'package:userapp/utils/resources/widgets/common_textfield.dart';
@@ -29,7 +30,9 @@ class TherapistHome extends StatelessWidget {
                 height: 55.h,
                 width: 130.w,
                 buttonText: 'Add User',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, RouteName.adduser);
+                },
               ),
             ),
           ],

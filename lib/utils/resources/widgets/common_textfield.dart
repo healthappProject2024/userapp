@@ -33,6 +33,9 @@ class CommonTextfield extends StatelessWidget {
         controller: controller,
         validator: validator,
         obscureText: isObscureText,
+        style: TextStyle(
+            color: Theme.of(context).highlightColor,
+          ),
         decoration: InputDecoration(
           isDense: true,
           hintText: hintText,

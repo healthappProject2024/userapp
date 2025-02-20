@@ -6,15 +6,26 @@ class Lighttheme {
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: MyColors.whiteColor,
     indicatorColor: MyColors.textfieldLightMode,
+    cardColor: MyColors.whiteColor,
+    highlightColor: MyColors.blackColor,
     iconTheme: IconThemeData(
       color: MyColors.hintTextColor,
     ),
+        appBarTheme: AppBarTheme(
+      backgroundColor: MyColors.whiteColor,
+      iconTheme: IconThemeData(
+        color: MyColors.hintTextColor,
+      ),
+    ),
     textTheme: TextTheme(
-        headlineLarge: AppTextTheme.textTheme.headlineLarge
-            ?.copyWith(color: MyColors.blackColor),
-        headlineMedium: AppTextTheme.textTheme.headlineMedium,
-        labelSmall: AppTextTheme.textTheme.labelSmall,
-        bodyMedium: AppTextTheme.textTheme.labelSmall
-            ?.copyWith(color: MyColors.blackColor)),
+      headlineLarge: AppTextTheme.textTheme.headlineLarge?.copyWith(
+        color: MyColors.blackColor,
+      ),
+      headlineMedium: AppTextTheme.textTheme.headlineMedium,
+      labelSmall: AppTextTheme.textTheme.labelSmall,
+      bodyMedium: AppTextTheme.textTheme.labelSmall?.copyWith(
+        color: MyColors.blackColor,
+      ),
+    ),
   );
 }

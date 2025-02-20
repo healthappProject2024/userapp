@@ -1,0 +1,33 @@
+import 'dart:io';
+import 'package:fpdart/fpdart.dart';
+import 'package:userapp/features/therapist/add-user/data/remote_data_source/add_user_remote_data_source.dart';
+import 'package:userapp/features/therapist/add-user/domain/repository/add_user_repo.dart';
+import 'package:userapp/utils/resources/error/failures.dart';
+
+class AddUserRepoImpl implements AddUserRepo{
+  final AddUserRemoteDataSource addUserRemoteDataSource;
+
+  AddUserRepoImpl({required this.addUserRemoteDataSource});
+  @override
+  Future<Either<Failures, bool>> addUser({required String name, required String email, required String password, required File imageFile}) async {
+    try{
+      final response = await addUserRemoteDataSource.adduser(name: name, email: email, password: password, imageFile: imageFile);
+      return Right(response);
+    }catch(e){
+      return Left(Failures(message: e.toString()));
+    }
+  }
+}
+
+//   String _mapErrorToMessage(dynamic error) {
+//     if (error is FirebaseAuthException) {
+//       return "Authentication Error: ${error.message}";
+//     } else if (error is FirebaseException) {
+//       return "Firebase Error: ${error.message}";
+//     } else if (error is SocketException) {
+//       return "Network Error: Please check your internet connection.";
+//     } else {
+//       return "Unexpected Error: ${error.toString()}";
+//     }
+//   }
+// }

@@ -15,7 +15,7 @@ class DecisionMaker extends StatelessWidget {
           if (state is OnboardingLoading) {
             return Scaffold(
               body: Center(
-                child: Text("Loading..."), 
+                child: Text("Loading..."),
               ),
             );
           } else if (state is OnboardingCompleted) {
@@ -25,7 +25,7 @@ class DecisionMaker extends StatelessWidget {
           } else if (state is OnboardingError) {
             return Scaffold(
               body: Center(
-                child: Text('Error: ${state.message}'), 
+                child: Text('Error: ${state.message}'),
               ),
             );
           } else {

@@ -7,7 +7,9 @@ import '../../../../../utils/resources/error/failures.dart';
 class TherapistLoginRepositoryImpl implements TherapistLoginRepository {
   final TherapistRemoteDataSource remoteDataSource;
 
-  TherapistLoginRepositoryImpl({required this.remoteDataSource});
+  TherapistLoginRepositoryImpl({
+    required this.remoteDataSource,
+  });
 
   @override
   Future<Either<Failures, TherapistModel>> therapistLogin({
@@ -15,14 +17,16 @@ class TherapistLoginRepositoryImpl implements TherapistLoginRepository {
     required String password,
   }) async {
     try {
-      final therapist = await remoteDataSource.therapistSignIn(email: email, password: password);
+      final therapist = await remoteDataSource.therapistSignIn(
+          email: email, password: password);
       if (therapist != null) {
-        return Right(therapist); 
+        return Right(therapist);
       } else {
-        return Left(Failures(message: "Invalid credentials or therapist not found"));
+        return Left(
+            Failures(message: "Invalid credentials or therapist not found"));
       }
     } catch (e) {
-      return Left(Failures(message: e.toString())); 
+      return Left(Failures(message: e.toString()));
     }
   }
 }

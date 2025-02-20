@@ -6,8 +6,16 @@ class Darktheme {
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: MyColors.darkColor,
     indicatorColor: MyColors.textfieldDarktMode,
+    cardColor: MyColors.formbgColorDark,
+    highlightColor: MyColors.whiteColor,
     iconTheme: IconThemeData(
       color: MyColors.hintTextColor,
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: MyColors.darkColor,
+      iconTheme: IconThemeData(
+        color: MyColors.hintTextColor,
+      ),
     ),
     textTheme: TextTheme(
       headlineLarge: AppTextTheme.textTheme.headlineLarge?.copyWith(color: MyColors.whiteColor),

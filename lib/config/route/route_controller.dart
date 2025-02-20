@@ -5,6 +5,7 @@ import 'package:userapp/features/auth/user/presentation/pages/profile_complete.d
 import 'package:userapp/features/auth/user/presentation/pages/user_login.dart';
 import 'package:userapp/features/onboarding/presentation/pages/get_started.dart';
 import 'package:userapp/features/onboarding/presentation/pages/introduction.dart';
+import 'package:userapp/features/therapist/add-user/presentation/pages/add_user.dart';
 import 'package:userapp/features/therapist/home/presentation/pages/therapist_home.dart';
 import 'package:userapp/features/user/home/presentation/pages/user_home.dart';
 import 'package:userapp/utils/resources/page/decision_maker.dart';
@@ -20,5 +21,6 @@ class RouteController {
     RouteName.profileComplete: (ctx) => ProfileComplete(),
     RouteName.userHome: (ctx) => UserHome(),
     RouteName.therapistHome: (ctx) => TherapistHome(),
+    RouteName.adduser : (ctx) => AddUser(),
   };
 }

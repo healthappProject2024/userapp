@@ -16,12 +16,16 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.0.0
+  flutter_image_compress: ^2.4.0
   flutter_native_splash: ^2.4.4
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.17
   fpdart: ^1.1.1
   google_fonts: ^6.2.1
+  image: ^4.5.2
+  image_picker: ^1.1.2
   mockito: ^5.4.5
+  path_provider: ^2.1.5
   shared_preferences: ^2.4.0
   test: ^1.25.8
 

@@ -11,5 +11,7 @@ class MyColors {
   static const textfieldDarktMode =  Color(0xFF1E1E1E);
   static const iconColor = Color(0xFF7B6F72);
   static const hintTextColor = Color(0xFFADA4A5);
-
+  static const greenColor = Colors.green;
+  static const errorColor = Colors.red;
+  static final formbgColorDark = Colors.grey[900];
 }
