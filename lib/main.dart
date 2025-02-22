@@ -6,6 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:userapp/features/auth/shared/login_status/data/local_data_source/login_status_local_data_source.dart';
+import 'package:userapp/features/auth/shared/login_status/data/repository/is_loggedin_repository_impl.dart';
+import 'package:userapp/features/auth/shared/login_status/domain/usecases/check_login_status.dart';
+import 'package:userapp/features/auth/shared/login_status/domain/usecases/log_out.dart';
+import 'package:userapp/features/auth/shared/login_status/domain/usecases/save_login_status.dart';
+import 'package:userapp/features/auth/shared/login_status/presentation/cubit/login_status_cubit.dart';
 import 'package:userapp/features/auth/therapist/data/remote_data_source/therapist_remote_data_source.dart';
 import 'package:userapp/features/auth/therapist/data/repository/therapist_login_repository_impl.dart';
 import 'package:userapp/features/auth/therapist/domain/usecase/threapist_login.dart';
@@ -47,6 +53,31 @@ void main() async {
               ),
             ),
           )..checkOnboardingStatus(),
+        ),
+        BlocProvider(
+          create: (context) => LoginStatusCubit(
+            checkLoginStatus: CheckLoginStatus(
+              IsLoggedinRepositoryImpl(
+                LoginStatusLocalDataSourceImpl(
+                  LocalDataService(prefs: pref),
+                ),
+              ),
+            ),
+            saveLoginStatus: SaveLoginStatus(
+              IsLoggedinRepositoryImpl(
+                LoginStatusLocalDataSourceImpl(
+                  LocalDataService(prefs: pref),
+                ),
+              ),
+            ),
+            logOut: LogOut(
+              IsLoggedinRepositoryImpl(
+                LoginStatusLocalDataSourceImpl(
+                  LocalDataService(prefs: pref),
+                ),
+              ),
+            ),
+          )..loadLoginStatus(),
         ),
         BlocProvider(
           create: (ctx) => ShowPasswordCubit(),

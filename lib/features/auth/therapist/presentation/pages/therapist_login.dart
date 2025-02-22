@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:userapp/features/auth/shared/login.dart';
+import 'package:userapp/features/auth/shared/login_status/presentation/cubit/login_status_cubit.dart';
+import 'package:userapp/features/auth/shared/widgets/login.dart';
 import 'package:userapp/features/auth/therapist/presentation/bloc/therapist_login_bloc.dart';
 import 'package:userapp/features/therapist/home/presentation/pages/therapist_home.dart';
 
@@ -48,6 +49,7 @@ class _TherapistLoginState extends State<TherapistLogin> {
                           password: passwordController.text.trim(),
                         ),
                       );
+                 context.read<LoginStatusCubit>().saveLoginStatus(role: "therapist");
                 }
               },
             ),

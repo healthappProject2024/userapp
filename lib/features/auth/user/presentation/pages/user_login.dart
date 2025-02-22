@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:userapp/config/route/route_name.dart';
-import 'package:userapp/features/auth/shared/login.dart';
+import 'package:userapp/features/auth/shared/widgets/login.dart';
 
 class UserLogin extends StatefulWidget {
   const UserLogin({super.key});

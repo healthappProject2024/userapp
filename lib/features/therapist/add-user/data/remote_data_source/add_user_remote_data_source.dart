@@ -35,27 +35,17 @@ Future<bool> adduser({
   required File imageFile,
 }) async {
   try {
-    print("🟢 Step 1: Creating user in Firebase Auth...");
     UserCredential credential = await _auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
     if (credential.user == null) {
-      print("🔴 User creation failed: No user found.");
       return false;
     }
-
     String uid = credential.user!.uid;
-    print("✅ Step 2: User created successfully! UID = $uid");
-
-    print("🟢 Step 3: Uploading profile image...");
-    print("📷 Image path: ${imageFile.path}"); 
     Reference ref = _storage.ref().child('profileImages/$uid.jpg');
     TaskSnapshot snapshot = await ref.putFile(imageFile);
     String imageUrl = await snapshot.ref.getDownloadURL();
-    print("✅ Step 4: Image uploaded successfully! URL = $imageUrl");
-
-    print("🟢 Step 5: Saving user data to Firestore...");
     UserModel user = UserModel(
       name: name,
       email: email,
@@ -66,11 +56,9 @@ Future<bool> adduser({
         .collection(RemoteDataSourceHelper.accountCollectionName)
         .doc(uid)
         .set(user.toFirestore());
-
-    print("✅ Step 6: User data saved successfully.");
     return true;
   } catch (e) {
-    print("🔴 Unexpected Error: $e");
+    // print("🔴 Unexpected Error: $e");
     return false;
   }
 }

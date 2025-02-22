@@ -1,5 +1,5 @@
 import 'package:userapp/config/route/route_name.dart';
-import 'package:userapp/features/auth/shared/login_decision.dart';
+import 'package:userapp/features/auth/shared/pages/login_decision.dart';
 import 'package:userapp/features/auth/therapist/presentation/pages/therapist_login.dart';
 import 'package:userapp/features/auth/user/presentation/pages/profile_complete.dart';
 import 'package:userapp/features/auth/user/presentation/pages/user_login.dart';

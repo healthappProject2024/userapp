@@ -5,7 +5,6 @@ import 'package:userapp/features/therapist/add-user/presentation/bloc/add_user_b
 import 'package:userapp/features/therapist/add-user/presentation/cubit/pickimag_cubit.dart';
 import 'package:userapp/features/therapist/add-user/presentation/widget/form_box.dart';
 import 'package:userapp/features/therapist/add-user/presentation/widget/photo_box.dart';
-import 'package:userapp/features/therapist/home/presentation/pages/therapist_home.dart';
 import 'package:userapp/utils/resources/widgets/commone_dialouge_box.dart';
 
 class AddUser extends StatefulWidget {

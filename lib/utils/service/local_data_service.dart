@@ -12,7 +12,16 @@ class LocalDataService {
   bool getBoolValue(String key) {
     return prefs.getBool(key) ?? false;
   }
-  Future<void> clearData(String key)async {
+
+  Future<void> clearData(String key) async {
     await prefs.remove(key);
+  }
+
+  String getString(String key) {
+    return prefs.getString(key) ?? "";
+  }
+
+  Future<void> setString({required String key, required String value}) async {
+    await prefs.setString(key, value);
   }
 }
