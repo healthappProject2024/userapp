@@ -12,8 +12,10 @@ import 'package:userapp/features/auth/shared/login_status/domain/usecases/check_
 import 'package:userapp/features/auth/shared/login_status/domain/usecases/log_out.dart';
 import 'package:userapp/features/auth/shared/login_status/domain/usecases/save_login_status.dart';
 import 'package:userapp/features/auth/shared/login_status/presentation/cubit/login_status_cubit.dart';
-import 'package:userapp/features/auth/therapist/data/remote_data_source/therapist_remote_data_source.dart';
+import 'package:userapp/features/auth/therapist/data/data_sources/local/therapist_local_data_source.dart';
+import 'package:userapp/features/auth/therapist/data/data_sources/remote/therapist_remote_data_source.dart';
 import 'package:userapp/features/auth/therapist/data/repository/therapist_login_repository_impl.dart';
+import 'package:userapp/features/auth/therapist/domain/usecase/save_therapist_data.dart';
 import 'package:userapp/features/auth/therapist/domain/usecase/threapist_login.dart';
 import 'package:userapp/features/auth/therapist/presentation/bloc/therapist_login_bloc.dart';
 import 'package:userapp/features/onboarding/data/local_data_source/local_data_source.dart';
@@ -89,6 +91,24 @@ void main() async {
                 remoteDataSource: TherapistRemoteDataSourceImpl(
                   auth,
                   db,
+                ),
+                therapistLocalDataSource: TherapistLocalDataSourceImpl(
+                  LocalDataService(
+                    prefs: pref,
+                  ),
+                ),
+              ),
+            ),
+            saveTherapistDataUsecase: SaveTherapistDataUsecase(
+              repository: TherapistLoginRepositoryImpl(
+                remoteDataSource: TherapistRemoteDataSourceImpl(
+                  auth,
+                  db,
+                ),
+                therapistLocalDataSource: TherapistLocalDataSourceImpl(
+                  LocalDataService(
+                    prefs: pref,
+                  ),
                 ),
               ),
             ),

@@ -7,7 +7,7 @@ class TherapistModel extends Therapist {
     required super.email,
   });
 
-  factory TherapistModel.fromJson(Map<String, dynamic> json) {
+ factory TherapistModel.fromJson(Map<String, dynamic> json) {
     return TherapistModel(
       name: json['name'] as String,
       email: json['email'] as String,
