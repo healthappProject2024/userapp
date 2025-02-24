@@ -18,7 +18,6 @@ class LoginStatusLocalDataSourceImpl implements LoginStatusLocalDataSource {
       bool isLoggedIn =
           localDataService.getBoolValue(SharedpreferenceHelper.loginStatus);
       String role = localDataService.getString(SharedpreferenceHelper.role);
-
       return IsLoggedinModel(isLoggedin: isLoggedIn, role: role);
     } catch (e) {
       throw Exception("Error fetching login status: ${e.toString()}");
@@ -40,8 +39,11 @@ class LoginStatusLocalDataSourceImpl implements LoginStatusLocalDataSource {
     try {
       await localDataService.setBoolValue(SharedpreferenceHelper.loginStatus);
       await localDataService.setString(
-          key: SharedpreferenceHelper.role, value: role);
+        key: SharedpreferenceHelper.role,
+        value: role,
+      );
     } catch (e) {
+      print("Error is : ${e.toString()}");
       throw Exception(e.toString());
     }
   }

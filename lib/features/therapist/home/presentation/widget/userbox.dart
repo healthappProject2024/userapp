@@ -3,7 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:userapp/utils/const/app_colors.dart/my_colors.dart';
 
 class Userbox extends StatelessWidget {
-  const Userbox({super.key});
+  final String imageUrl;
+  final String name;
+  final String uid;
+
+  const Userbox({
+    super.key,
+    required this.imageUrl,
+    required this.name,
+    required this.uid,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +21,7 @@ class Userbox extends StatelessWidget {
         color: MyColors.whiteColor,
         elevation: 5.0,
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 18.w,vertical: 18.h),
+          padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 18.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -24,40 +33,43 @@ class Userbox extends StatelessWidget {
                     height: 87.h,
                     width: 87.w,
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      image: DecorationImage(
+                        image: NetworkImage(imageUrl),
+                        fit: BoxFit.cover
+                      ),
                     ),
                   ),
                   Column(
-                    children: [
-                      Text('NAME'),
-                      Text("ID"),
-                      Text('AGE')
-                    ],
+                    children: [Text(name), Text(uid), Text('AGE')],
                   ),
                   CircleAvatar(
-                    radius: 17.r,
+                    radius: 8.r,
                     backgroundColor: Colors.green,
                   ),
                   CircleAvatar(
-                    radius: 17.r,
+                    radius: 8.r,
                     backgroundColor: Colors.yellow,
                   ),
                   CircleAvatar(
-                    radius: 17.r,
+                    radius: 8.r,
                     backgroundColor: Colors.red,
                   ),
                 ],
               ),
-              SizedBox(height:15.h),
+              SizedBox(height: 15.h),
               Container(
                 height: 50.h,
                 width: 135.w,
                 decoration: BoxDecoration(
-                  color: MyColors.gradientEndColor,
-                  borderRadius: BorderRadius.circular(10.r)
-                ),
+                    color: MyColors.gradientEndColor,
+                    borderRadius: BorderRadius.circular(10.r)),
                 child: Center(
-                  child: Text("view more",style: TextStyle(color: MyColors.whiteColor,fontWeight: FontWeight.bold),),
+                  child: Text(
+                    "view more",
+                    style: TextStyle(
+                        color: MyColors.whiteColor,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               )
             ],

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:userapp/utils/const/local_data_helper.dart/sharedpreference_helper.dart';
 import 'package:userapp/utils/service/local_data_service.dart';
 
@@ -19,7 +18,7 @@ class TherapistLocalDataSourceImpl implements TherapistLocalDataSource {
         value: model,
       );
     } catch (e) {
-      debugPrint('Error caching therapist data: $e');
+      throw Exception(e.toString());
     }
   }
 }

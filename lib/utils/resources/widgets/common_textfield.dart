@@ -11,6 +11,7 @@ class CommonTextfield extends StatelessWidget {
   final double width;
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
+    final ValueChanged<String>? onChanged;
 
   const CommonTextfield({
     super.key,
@@ -22,6 +23,7 @@ class CommonTextfield extends StatelessWidget {
     this.validator,
     this.controller,
     this.isObscureText = false,
+    this.onChanged,
   });
 
   @override
@@ -30,6 +32,7 @@ class CommonTextfield extends StatelessWidget {
       height: 60.h,
       width: width.w,
       child: TextFormField(
+        onChanged: onChanged,
         controller: controller,
         validator: validator,
         obscureText: isObscureText,

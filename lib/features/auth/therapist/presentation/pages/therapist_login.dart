@@ -41,7 +41,7 @@ class _TherapistLoginState extends State<TherapistLogin> {
             child: Login(
               emailController: emailController,
               passwordController: passwordController,
-              loginButtonOnpressed: () {
+              loginButtonOnpressed: () async {
                 if (formKey.currentState!.validate()) {
                   context.read<TherapistLoginBloc>().add(
                         LoginTherapist(
@@ -49,7 +49,7 @@ class _TherapistLoginState extends State<TherapistLogin> {
                           password: passwordController.text.trim(),
                         ),
                       );
-                 context.read<LoginStatusCubit>().saveLoginStatus(role: "therapist");
+                 await context.read<LoginStatusCubit>().saveLoginStatus(role: "therapist");
                 }
               },
             ),

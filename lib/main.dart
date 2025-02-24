@@ -27,6 +27,11 @@ import 'package:userapp/features/therapist/add-user/data/repository/add_user_rep
 import 'package:userapp/features/therapist/add-user/domain/usecase/add_user_usecase.dart';
 import 'package:userapp/features/therapist/add-user/presentation/bloc/add_user_bloc.dart';
 import 'package:userapp/features/therapist/add-user/presentation/cubit/pickimag_cubit.dart';
+import 'package:userapp/features/therapist/home/data/data_source/local/get_therapist_name_local_data_source.dart';
+import 'package:userapp/features/therapist/home/data/data_source/remote/find_users_remote_data_source.dart';
+import 'package:userapp/features/therapist/home/data/repository/therapist_home_repository_impl.dart';
+import 'package:userapp/features/therapist/home/domain/usecases/load_users_usecase.dart';
+import 'package:userapp/features/therapist/home/presentation/bloc/therapist_home_bloc.dart';
 import 'package:userapp/firebase_options.dart';
 import 'package:userapp/userapp.dart';
 import 'package:userapp/utils/resources/cubit/show_password_cubit.dart';
@@ -55,6 +60,28 @@ void main() async {
               ),
             ),
           )..checkOnboardingStatus(),
+        ),
+        BlocProvider(
+          create: (context) => TherapistHomeBloc(
+            getTherapistNameUseCase: GetTherapistNameUseCase(
+              TherapistHomeRepositoryImpl(
+                findUsersRemoteDataSource: FindUsersRemoteDataSourceImpl(db),
+                getTherapistNameLocalDataSource:
+                    GetTherapistNameLocalDataSourceImpl(
+                  LocalDataService(prefs: pref),
+                ),
+              ),
+            ),
+            loadUsersUseCase: LoadUsersUseCase(
+              TherapistHomeRepositoryImpl(
+                findUsersRemoteDataSource: FindUsersRemoteDataSourceImpl(db),
+                getTherapistNameLocalDataSource:
+                    GetTherapistNameLocalDataSourceImpl(
+                  LocalDataService(prefs: pref),
+                ),
+              ),
+            ),
+          ),
         ),
         BlocProvider(
           create: (context) => LoginStatusCubit(

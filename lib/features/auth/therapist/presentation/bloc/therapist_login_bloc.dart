@@ -26,8 +26,10 @@ class TherapistLoginBloc
         email: event.email,
         password: event.password,
       );
-      result.fold(
-        (failure) => emit(TherapistLoginFailure(errorMessage: failure.message)),
+      await result.fold(
+        (failure) async {
+          emit(TherapistLoginFailure(errorMessage: failure.message));
+        },
         (therapist) async {
           final therapistJson = jsonEncode(therapist.toJson());
           await _saveTherapistDataUsecase.call(data: therapistJson);

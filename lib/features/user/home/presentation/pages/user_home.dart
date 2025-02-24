@@ -33,6 +33,7 @@ class _UserHomeState extends State<UserHome> {
         children: [
           HomeTopSection(
             isUser: true,
+            iconButton: IconButton(onPressed: (){}, icon: Icon(Icons.bluetooth)),
           ),
           Expanded(
             child: ListView.builder(

@@ -34,19 +34,12 @@ class TherapistLoginRepositoryImpl implements TherapistLoginRepository {
   }
   
   @override
-  Future<void> saveTherapist(String data) {
-    // TODO: implement saveTherapist
-    throw UnimplementedError();
+  Future<void> saveTherapist(String data) async {
+    try{
+      await therapistLocalDataSource.cacheTherapist(data);
+    }catch(e){
+      print("Error is: ${e.toString()}");
+      throw Exception(e.toString());
+    }
   }
-  
-  
-// @override
-// Future<void> saveTherapist(TherapistModel therapistModel) async {
-//   try {
-//     await therapistLocalDataSource.cacheTherapist(therapistModel);
-//   } catch (e) {
-//     debugPrint('Error saving therapist data: $e');
-//     throw Exception('Failed to save therapist data: ${e.toString()}');
-//   }
-// }
 }
