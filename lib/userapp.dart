@@ -19,7 +19,7 @@ class Userapp extends StatelessWidget {
           darkTheme: Darktheme.darkTheme,
           themeMode: ThemeMode.system,
           initialRoute: RouteName.decisionmaker,
-          routes: RouteController.route,
+          onGenerateRoute: RouteController.generateRoute,
         );
       },
     );

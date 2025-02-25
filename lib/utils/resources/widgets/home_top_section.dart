@@ -5,10 +5,12 @@ import 'package:userapp/utils/const/string/app_strings.dart';
 class HomeTopSection extends StatelessWidget {
   final bool isUser;
   final IconButton iconButton;
+  final String name;
   const HomeTopSection({
     super.key,
     this.isUser = false,
     required this.iconButton,
+    required this.name,
   });
 
   @override
@@ -25,7 +27,7 @@ class HomeTopSection extends StatelessWidget {
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                   Text(
-                    "NAME",
+                    name,
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                 ],
@@ -52,7 +54,7 @@ class HomeTopSection extends StatelessWidget {
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                   Text(
-                    "NAME",
+                    name,
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                 ],

@@ -9,5 +9,6 @@ class RouteName {
   static const profileComplete = '/profilecomplete';
   static const userHome = '/userhome';
   static const therapistHome = 'therapisthome';
-  static const adduser = 'user';
+  static const adduser = '/user';
+  static const messageDetailPage = "/messageDetailPage";
 }

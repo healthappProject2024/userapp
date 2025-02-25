@@ -1,0 +1,31 @@
+              Expanded(
+                child: BlocConsumer<TherapistHomeBloc, TherapistHomeState>(
+                  listener: (context, state) {
+                    if (state is TherapistHomeError) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(state.failure.message)),
+                      );
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is UsersLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (state is UsersLoaded) {
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: state.users.length,
+                        itemBuilder: (context, index) {
+                          final user = state.users[index];
+                          return Userbox(
+                            name: "Name : ${formatString(user.name)}",
+                            imageUrl: user.profileurl,
+                            uid: "ID :${formatString(user.uid)}",
+                          );
+                        },
+                      );
+                    } else {
+                      return const Center(child: Text('No users found.'));
+                    }
+                  },
+                ),
+              ),

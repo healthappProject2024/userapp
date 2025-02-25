@@ -22,6 +22,7 @@ class Lighttheme {
         color: MyColors.blackColor,
       ),
       headlineMedium: AppTextTheme.textTheme.headlineMedium,
+      headlineSmall: AppTextTheme.textTheme.headlineSmall?.copyWith(color: MyColors.blackColor),
       labelSmall: AppTextTheme.textTheme.labelSmall,
       bodyMedium: AppTextTheme.textTheme.labelSmall?.copyWith(
         color: MyColors.blackColor,

@@ -32,6 +32,11 @@ import 'package:userapp/features/therapist/home/data/data_source/remote/find_use
 import 'package:userapp/features/therapist/home/data/repository/therapist_home_repository_impl.dart';
 import 'package:userapp/features/therapist/home/domain/usecases/load_users_usecase.dart';
 import 'package:userapp/features/therapist/home/presentation/bloc/therapist_home_bloc.dart';
+import 'package:userapp/features/therapist/therapist_bottom_navigation/cubit/therapist_bottom_navigation_cubit.dart';
+import 'package:userapp/features/therapist/therapist_message/data/remote_data_source/meaage_remote_data_source.dart';
+import 'package:userapp/features/therapist/therapist_message/data/repository/message_repository_impl.dart';
+import 'package:userapp/features/therapist/therapist_message/domain/usecase/fetch_message_usecase.dart';
+import 'package:userapp/features/therapist/therapist_message/presentation/bloc/fetch_message_dart_bloc.dart';
 import 'package:userapp/firebase_options.dart';
 import 'package:userapp/userapp.dart';
 import 'package:userapp/utils/resources/cubit/show_password_cubit.dart';
@@ -61,6 +66,7 @@ void main() async {
             ),
           )..checkOnboardingStatus(),
         ),
+        BlocProvider(create: (ctx) => TherapistBottomNavigationCubit()),
         BlocProvider(
           create: (context) => TherapistHomeBloc(
             getTherapistNameUseCase: GetTherapistNameUseCase(
@@ -153,6 +159,15 @@ void main() async {
                   db: db,
                   storage: storage,
                 ),
+              ),
+            ),
+          ),
+        ),
+        BlocProvider(
+          create: (ctx) => FetchMessageDartBloc(
+            fetchMessageUsecase: FetchMessageUsecase(
+              MessageRepositoryImpl(
+                MessageRemoteDataSourceImpl(db),
               ),
             ),
           ),

@@ -20,6 +20,8 @@ class Darktheme {
     textTheme: TextTheme(
       headlineLarge: AppTextTheme.textTheme.headlineLarge?.copyWith(color: MyColors.whiteColor),
       headlineMedium: AppTextTheme.textTheme.headlineMedium,
+            headlineSmall: AppTextTheme.textTheme.headlineSmall?.copyWith(color: MyColors.whiteColor),
+      labelMedium: AppTextTheme.textTheme.labelMedium,
       labelSmall: AppTextTheme.textTheme.labelSmall,
       bodyMedium: AppTextTheme.textTheme.labelSmall?.copyWith(color: MyColors.whiteColor),
     ),

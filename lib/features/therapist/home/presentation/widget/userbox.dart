@@ -18,7 +18,7 @@ class Userbox extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Card(
-        color: MyColors.whiteColor,
+        color: Theme.of(context).cardColor,
         elevation: 5.0,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 18.h),
@@ -35,12 +35,17 @@ class Userbox extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(imageUrl),
-                        fit: BoxFit.cover
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
                   Column(
-                    children: [Text(name), Text(uid), Text('AGE')],
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(name),
+                      Text(uid),
+                      Text('AGE'),
+                    ],
                   ),
                   CircleAvatar(
                     radius: 8.r,

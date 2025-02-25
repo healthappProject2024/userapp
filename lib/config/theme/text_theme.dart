@@ -14,9 +14,17 @@ class AppTextTheme {
       color: MyColors.whiteColor,
       fontWeight: FontWeight.w700,
     ),
+    headlineSmall: GoogleFonts.poppins(
+      fontSize: 18.sp,
+      fontWeight: FontWeight.w600
+    ),
+    labelMedium: GoogleFonts.poppins(
+      fontSize: 12.sp,
+      color: MyColors.iconColor,
+    ),
     labelSmall: GoogleFonts.poppins(
       fontSize: 12.sp,
-      color: MyColors.specialTextColor
+      color: MyColors.specialTextColor,
     ),
     bodyMedium: GoogleFonts.poppins(
       fontSize: 16.sp,

@@ -5,7 +5,7 @@ sealed class TherapistHomeEvent {}
 
 class GetTherapistNameEvent extends TherapistHomeEvent {}
 
-class LoadUsersEvent extends TherapistHomeEvent {}
+class LoadHome extends TherapistHomeEvent {}
 
 class SearchUserEvent extends TherapistHomeEvent {
   final String query;

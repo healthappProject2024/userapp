@@ -47,6 +47,7 @@ import 'package:userapp/features/auth/shared/pages/login_decision.dart';
 import 'package:userapp/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:userapp/features/onboarding/presentation/pages/get_started.dart';
 import 'package:userapp/features/therapist/home/presentation/pages/therapist_home.dart';
+import 'package:userapp/features/therapist/therapist_bottom_navigation/page/therapist_bottom_navigation.dart';
 import 'package:userapp/features/user/home/presentation/pages/user_home.dart';
 
 class DecisionMaker extends StatelessWidget {
@@ -64,7 +65,7 @@ class DecisionMaker extends StatelessWidget {
               builder: (context, loginState) {
                 if (loginState is LoginStatusLoaded) {
                   if (loginState.isLoggedIn) {
-                    return loginState.role == "therapist" ? TherapistHome() : UserHome();
+                    return loginState.role == "therapist" ? TherapistBottomNavigation() : UserHome();
                   } else {
                     return LoginDecision();
                   }

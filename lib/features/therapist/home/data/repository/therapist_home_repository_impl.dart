@@ -17,7 +17,8 @@ class TherapistHomeRepositoryImpl implements TherapistHomeRepository {
   @override
   Future<String> getTherapistName() async {
     try {
-      return await getTherapistNameLocalDataSource.getTherapistName();
+      final name = await getTherapistNameLocalDataSource.getTherapistName();
+      return name; 
     } catch (e) {
       return "Error retrieving therapist name";
     }

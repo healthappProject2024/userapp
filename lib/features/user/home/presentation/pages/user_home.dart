@@ -32,6 +32,7 @@ class _UserHomeState extends State<UserHome> {
       child: Column(
         children: [
           HomeTopSection(
+            name: "",
             isUser: true,
             iconButton: IconButton(onPressed: (){}, icon: Icon(Icons.bluetooth)),
           ),

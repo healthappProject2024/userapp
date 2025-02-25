@@ -5,18 +5,13 @@ sealed class TherapistHomeState {}
 
 final class TherapistHomeInitial extends TherapistHomeState {}
 
-class TherapistNameLoaded extends TherapistHomeState {
+class HomeLoading extends TherapistHomeState {}
+
+class HomeLoaded extends TherapistHomeState {
+  final List<Users> users;
   final String therapistName;
 
-  TherapistNameLoaded(this.therapistName);
-}
-
-class UsersLoading extends TherapistHomeState {}
-
-class UsersLoaded extends TherapistHomeState {
-  final List<Users> users;
-
-  UsersLoaded(this.users);
+  HomeLoaded({required this.users,required this.therapistName});
 }
 
 class TherapistHomeError extends TherapistHomeState {
