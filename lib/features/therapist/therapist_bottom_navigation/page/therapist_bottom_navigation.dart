@@ -5,7 +5,7 @@ import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:userapp/features/therapist/home/presentation/pages/therapist_home.dart';
 import 'package:userapp/features/therapist/therapist_bottom_navigation/cubit/therapist_bottom_navigation_cubit.dart';
 import 'package:userapp/features/therapist/therapist_message/presentation/page/therapist_message_page.dart';
-import 'package:userapp/features/therapist/therapist_profile_page/pages/therapist_profile_page.dart';
+import 'package:userapp/features/therapist/therapist_profile_page/presentation/pages/therapist_profile_page.dart';
 import 'package:userapp/utils/const/app_colors.dart/my_colors.dart';
 
 class TherapistBottomNavigation extends StatelessWidget {

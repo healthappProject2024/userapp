@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:userapp/features/auth/shared/login_status/data/local_data_source/login_status_local_data_source.dart';
 import 'package:userapp/features/auth/shared/login_status/data/repository/is_loggedin_repository_impl.dart';
 import 'package:userapp/features/auth/shared/login_status/domain/usecases/check_login_status.dart';
-import 'package:userapp/features/auth/shared/login_status/domain/usecases/log_out.dart';
 import 'package:userapp/features/auth/shared/login_status/domain/usecases/save_login_status.dart';
 import 'package:userapp/features/auth/shared/login_status/presentation/cubit/login_status_cubit.dart';
 import 'package:userapp/features/auth/therapist/data/data_sources/local/therapist_local_data_source.dart';
@@ -37,6 +36,12 @@ import 'package:userapp/features/therapist/therapist_message/data/remote_data_so
 import 'package:userapp/features/therapist/therapist_message/data/repository/message_repository_impl.dart';
 import 'package:userapp/features/therapist/therapist_message/domain/usecase/fetch_message_usecase.dart';
 import 'package:userapp/features/therapist/therapist_message/presentation/bloc/fetch_message_dart_bloc.dart';
+import 'package:userapp/features/therapist/therapist_profile_page/data/data_source/local/profile_local_data_source.dart';
+import 'package:userapp/features/therapist/therapist_profile_page/data/data_source/remote/profile_remote_data_source.dart';
+import 'package:userapp/features/therapist/therapist_profile_page/data/repository/profile_repository_impl.dart';
+import 'package:userapp/features/therapist/therapist_profile_page/domain/usecase/fetch_profile_usecase.dart';
+import 'package:userapp/features/therapist/therapist_profile_page/domain/usecase/logout_usecase.dart';
+import 'package:userapp/features/therapist/therapist_profile_page/presentation/bloc/profile_bloc.dart';
 import 'package:userapp/firebase_options.dart';
 import 'package:userapp/userapp.dart';
 import 'package:userapp/utils/resources/cubit/show_password_cubit.dart';
@@ -105,13 +110,6 @@ void main() async {
                 ),
               ),
             ),
-            logOut: LogOut(
-              IsLoggedinRepositoryImpl(
-                LoginStatusLocalDataSourceImpl(
-                  LocalDataService(prefs: pref),
-                ),
-              ),
-            ),
           )..loadLoginStatus(),
         ),
         BlocProvider(
@@ -171,7 +169,31 @@ void main() async {
               ),
             ),
           ),
-        )
+        ),
+        BlocProvider(
+          create: (ctx) => ProfileBloc(
+            profileUsecase: FetchProfileUsecase(
+              ProfileRepositoryImpl(
+                ProfileLocalDataSourceImpl(
+                  LocalDataService(prefs: pref),
+                ),
+                ProfileRemoteDataSourceImpl(
+                  firebaseAuth: auth,
+                ),
+              ),
+            ),
+            logoutUsecase: LogoutUsecase(
+              ProfileRepositoryImpl(
+                ProfileLocalDataSourceImpl(
+                  LocalDataService(prefs: pref),
+                ),
+                ProfileRemoteDataSourceImpl(
+                  firebaseAuth: auth,
+                ),
+              ),
+            ),
+          ),
+        ),
       ],
       child: const Userapp(),
     ),

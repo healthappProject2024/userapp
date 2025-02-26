@@ -46,7 +46,6 @@ import 'package:userapp/features/auth/shared/login_status/presentation/cubit/log
 import 'package:userapp/features/auth/shared/pages/login_decision.dart';
 import 'package:userapp/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:userapp/features/onboarding/presentation/pages/get_started.dart';
-import 'package:userapp/features/therapist/home/presentation/pages/therapist_home.dart';
 import 'package:userapp/features/therapist/therapist_bottom_navigation/page/therapist_bottom_navigation.dart';
 import 'package:userapp/features/user/home/presentation/pages/user_home.dart';
 

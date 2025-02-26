@@ -11,7 +11,6 @@ import 'package:userapp/features/therapist/home/presentation/pages/therapist_hom
 import 'package:userapp/features/therapist/therapist_message/presentation/page/message_detail_page.dart';
 import 'package:userapp/features/user/home/presentation/pages/user_home.dart';
 import 'package:userapp/utils/resources/page/decision_maker.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RouteController {
   static Route<dynamic> generateRoute(RouteSettings settings) {

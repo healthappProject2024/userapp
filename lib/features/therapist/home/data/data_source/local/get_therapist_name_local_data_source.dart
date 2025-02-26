@@ -24,7 +24,6 @@ class GetTherapistNameLocalDataSourceImpl
         return "No Therapist Data Found";
       }
     } catch (e) {
-      print("Error decoding therapist data: $e");
       return "Error retrieving therapist name";
     }
   }

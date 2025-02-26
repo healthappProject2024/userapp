@@ -5,6 +5,8 @@ import 'package:userapp/utils/resources/widgets/common_textfield.dart';
 import 'package:userapp/utils/resources/widgets/home_top_section.dart';
 
 class HomeErrorStateWidget extends StatelessWidget {
+  final bool isNotError;
+  final String name;
   final Function() reTryFn;
   final Function() adduserBtn;
 
@@ -12,6 +14,8 @@ class HomeErrorStateWidget extends StatelessWidget {
     super.key,
     required this.reTryFn,
     required this.adduserBtn,
+    this.isNotError = false,
+    this.name = "unknown",
   });
 
   @override
@@ -31,7 +35,7 @@ class HomeErrorStateWidget extends StatelessWidget {
                   onPressed: adduserBtn,
                   icon: Icon(Icons.add),
                 ),
-                name: "unknown",
+                name: name,
               ),
               SizedBox(
                 height: 10.h,
@@ -41,7 +45,9 @@ class HomeErrorStateWidget extends StatelessWidget {
                 prefixIcon: Icon(Icons.search),
               ),
               Spacer(),
-              Text("There is an issue"),
+              isNotError
+                  ? Text("There is no user yet")
+                  : Text("There is an issue"),
               CommonButton(
                 height: 40.h,
                 width: 120.w,

@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:userapp/features/auth/shared/login_status/presentation/cubit/login_status_cubit.dart';
 import 'package:userapp/features/auth/shared/widgets/login.dart';
 import 'package:userapp/features/auth/therapist/presentation/bloc/therapist_login_bloc.dart';
-import 'package:userapp/features/therapist/home/presentation/pages/therapist_home.dart';
+import 'package:userapp/features/therapist/therapist_bottom_navigation/page/therapist_bottom_navigation.dart';
+import 'package:userapp/utils/resources/widgets/commone_dialouge_box.dart';
 
 class TherapistLogin extends StatefulWidget {
   const TherapistLogin({super.key});
@@ -19,44 +20,48 @@ class _TherapistLoginState extends State<TherapistLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TherapistLoginBloc, TherapistLoginState>(
+    return BlocConsumer<TherapistLoginBloc, TherapistLoginState>(
+      listener: (context, state) {
+        if (state is TherapistLoginFailure) {
+          return showAlertDialog(
+              context: context,
+              title: 'Auth Error',
+              content: state.errorMessage);
+        } else if (state is TherapistLoginSuccess) {
+          context.read<LoginStatusCubit>().saveLoginStatus(role: "therapist");
+        }
+      },
       builder: (context, state) {
         if (state is TherapistLoginLoading) {
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
         } else if (state is TherapistLoginSuccess) {
-          return const TherapistHome();
-        } else if (state is TherapistLoginFailure) {
-          return Scaffold(
-            body: Center(
-              child: Text("Error: ${state.errorMessage}"), 
-            ),
-          );
+          return const TherapistBottomNavigation();
         }
-
         return Scaffold(
           body: Form(
             key: formKey,
             child: Login(
               emailController: emailController,
               passwordController: passwordController,
-              loginButtonOnpressed: () async {
-                if (formKey.currentState!.validate()) {
-                  context.read<TherapistLoginBloc>().add(
-                        LoginTherapist(
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim(),
-                        ),
-                      );
-                 await context.read<LoginStatusCubit>().saveLoginStatus(role: "therapist");
-                }
-              },
+              loginButtonOnpressed: () => _onLoginPressed(),
             ),
           ),
         );
       },
     );
+  }
+
+  void _onLoginPressed() {
+    if (formKey.currentState!.validate()) {
+      context.read<TherapistLoginBloc>().add(
+            LoginTherapist(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim(),
+            ),
+          );
+    }
   }
 
   @override

@@ -44,7 +44,8 @@ class TherapistRemoteDataSourceImpl implements TherapistRemoteDataSource {
       final data = document.data();
 
       if (document.exists && data != null && data['role'] == 'therapist') {
-        return TherapistModel.fromJson(data);
+        final uid = user.uid;
+        return TherapistModel.fromJson(data,uid);
       }
       throw Exception("User is not a therapist or does not exist.");
     } on FirebaseAuthException catch (e) {

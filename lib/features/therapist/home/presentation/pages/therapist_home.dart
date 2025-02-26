@@ -30,6 +30,19 @@ class _TherapistHomeState extends State<TherapistHome> {
           if (state is HomeLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is HomeLoaded) {
+            if(state.users.isEmpty){
+              return HomeErrorStateWidget(
+              isNotError: true,
+              name: state.therapistName,
+              reTryFn: () => context.read<TherapistHomeBloc>().add(LoadHome()),
+              adduserBtn: () {
+                Navigator.pushNamed(
+                  context,
+                  RouteName.adduser,
+                );
+              },
+            );
+            }
             return HomeSuccesStateWidget(
               searchController: _searchController,
               name: state.therapistName,

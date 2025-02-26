@@ -38,7 +38,6 @@ class TherapistLoginRepositoryImpl implements TherapistLoginRepository {
     try{
       await therapistLocalDataSource.cacheTherapist(data);
     }catch(e){
-      print("Error is: ${e.toString()}");
       throw Exception(e.toString());
     }
   }

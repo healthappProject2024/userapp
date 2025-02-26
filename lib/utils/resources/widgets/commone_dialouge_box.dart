@@ -13,6 +13,7 @@ void showAlertDialog({
       return AlertDialog(
         title: Text(title),
         content: Text(content),
+        backgroundColor: Theme.of(context).cardColor,
         actions: [
           TextButton(
             onPressed: () {

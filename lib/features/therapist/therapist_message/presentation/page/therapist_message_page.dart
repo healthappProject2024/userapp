@@ -22,6 +22,11 @@ class TherapistMessagePage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is MessageFetched) {
+            if (state.messages.isEmpty) {
+              return Center(
+                child: Text("No message yet"),
+              );
+            }
             return MessageBox(messageList: state.messages);
           } else if (state is MessageFetchFailed) {
             return MessageErrorWidget(errorMessage: state.errorMessage);

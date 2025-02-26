@@ -5,7 +5,6 @@ import 'package:userapp/utils/service/local_data_service.dart';
 abstract interface class LoginStatusLocalDataSource {
   Future<IsLoggedinModel> getLoginStatus();
   Future<void> saveLoginStatus({required String role});
-  Future<void> logOut();
 }
 
 class LoginStatusLocalDataSourceImpl implements LoginStatusLocalDataSource {
@@ -21,16 +20,6 @@ class LoginStatusLocalDataSourceImpl implements LoginStatusLocalDataSource {
       return IsLoggedinModel(isLoggedin: isLoggedIn, role: role);
     } catch (e) {
       throw Exception("Error fetching login status: ${e.toString()}");
-    }
-  }
-
-  @override
-  Future<void> logOut() async {
-    try {
-      await localDataService.clearData(SharedpreferenceHelper.loginStatus);
-      await localDataService.clearData(SharedpreferenceHelper.role);
-    } catch (e) {
-      throw Exception("Error logging out: ${e.toString()}");
     }
   }
 

@@ -25,13 +25,4 @@ class IsLoggedinRepositoryImpl implements IsLoggedinRepository {
       throw Exception("Error saving login status: ${e.toString()}");
     }
   }
-
-  @override
-  Future<void> logOut() async {
-    try {
-      await loginStatusLocalDataSource.logOut();
-    } catch (e) {
-      throw Exception("Error logging out: ${e.toString()}");
-    }
-  }
 }

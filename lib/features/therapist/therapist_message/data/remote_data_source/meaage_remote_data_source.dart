@@ -23,7 +23,6 @@ class MessageRemoteDataSourceImpl implements MessageRemoteDataSource {
       final messages = querySnapshot.docs
           .map((doc) => MessageModel.fromFirestore(doc))
           .toList();
-          print("message is :$messages");
       return Right(messages);
     } catch (e) {
       return Left(Failures(message: e.toString()));
