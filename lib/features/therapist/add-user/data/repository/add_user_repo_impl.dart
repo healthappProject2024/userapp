@@ -9,25 +9,12 @@ class AddUserRepoImpl implements AddUserRepo{
 
   AddUserRepoImpl({required this.addUserRemoteDataSource});
   @override
-  Future<Either<Failures, bool>> addUser({required String name, required String email, required String password, required File imageFile}) async {
+  Future<Either<Failures, bool>> addUser({required String name, required String email, required String password, required File imageFile,    required String therapisName,}) async {
     try{
-      final response = await addUserRemoteDataSource.adduser(name: name, email: email, password: password, imageFile: imageFile);
+      final response = await addUserRemoteDataSource.adduser(name: name, email: email, password: password, imageFile: imageFile,therapisName: therapisName);
       return Right(response);
     }catch(e){
       return Left(Failures(message: e.toString()));
     }
   }
 }
-
-//   String _mapErrorToMessage(dynamic error) {
-//     if (error is FirebaseAuthException) {
-//       return "Authentication Error: ${error.message}";
-//     } else if (error is FirebaseException) {
-//       return "Firebase Error: ${error.message}";
-//     } else if (error is SocketException) {
-//       return "Network Error: Please check your internet connection.";
-//     } else {
-//       return "Unexpected Error: ${error.toString()}";
-//     }
-//   }
-// }

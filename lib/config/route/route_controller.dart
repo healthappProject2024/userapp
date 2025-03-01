@@ -34,22 +34,37 @@ class RouteController {
       case RouteName.therapistHome:
         return MaterialPageRoute(builder: (_) => TherapistHome());
       case RouteName.adduser:
-        return MaterialPageRoute(builder: (_) => AddUser());
+        if (settings.arguments is String) {
+          final String therapistName = settings.arguments as String;
+          return MaterialPageRoute(
+            builder: (_) => AddUser(therapisName: therapistName),
+          );
+        }
+        return _errorRoute();
 
       case RouteName.messageDetailPage:
-        final args = settings.arguments as Map<String, dynamic>;
-        return MaterialPageRoute(
-          builder: (_) => MessageDetailPage(
-            message: args['message'],
-            time: args['time'],
-          ),
-        );
+        if (settings.arguments is Map<String, dynamic>) {
+          final args = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (_) => MessageDetailPage(
+              message: args['message'],
+              time: args['time'],
+            ),
+          );
+        }
+        return _errorRoute();
+
       default:
-        return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Center(child: Text("No route defined for ${settings.name}")),
-          ),
-        );
+        return _errorRoute();
     }
+  }
+
+  static Route<dynamic> _errorRoute() {
+    return MaterialPageRoute(
+      builder: (_) => Scaffold(
+        body:
+            Center(child: Text("Invalid or missing arguments for this route")),
+      ),
+    );
   }
 }

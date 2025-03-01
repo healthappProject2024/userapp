@@ -14,8 +14,9 @@ class LoginStatusLocalDataSourceImpl implements LoginStatusLocalDataSource {
   @override
   Future<IsLoggedinModel> getLoginStatus() async {
     try {
-      bool isLoggedIn =
-          localDataService.getBoolValue(SharedpreferenceHelper.loginStatus);
+      bool isLoggedIn = localDataService.getBoolValue(
+        SharedpreferenceHelper.loginStatus,
+      );
       String role = localDataService.getString(SharedpreferenceHelper.role);
       return IsLoggedinModel(isLoggedin: isLoggedIn, role: role);
     } catch (e) {

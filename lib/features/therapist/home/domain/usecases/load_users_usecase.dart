@@ -18,7 +18,7 @@ class LoadUsersUseCase {
 
   LoadUsersUseCase(this.repository);
 
-  Stream<Either<Failures, List<Users>>> call() {
-    return repository.loadUsers();
+  Stream<Either<Failures, List<Users>>> call({required String therapistName}) {
+    return repository.loadUsers(therapistName: therapistName);
   }
 }

@@ -13,12 +13,14 @@ class AddUserUseCase {
     required String email,
     required String password,
     required File imageFile,
+    required String therapisName,
   }) {
     return repository.addUser(
       name: name,
       email: email,
       password: password,
       imageFile: imageFile,
+      therapisName: therapisName,
     );
   }
 }

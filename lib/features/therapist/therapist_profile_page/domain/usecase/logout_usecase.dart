@@ -6,6 +6,6 @@ class LogoutUsecase {
 
   Future<void>call() async {
     await profileRepository.clearLocalStorage();
-    await profileRepository.logOut();
+    // await profileRepository.logOut();
   }
 }

@@ -6,7 +6,7 @@ import 'package:userapp/utils/const/remote_data_source_const/remote_data_source_
 import 'package:userapp/utils/resources/error/failures.dart';
 
 abstract interface class FindUsersRemoteDataSource {
-  Stream<Either<Failures, List<Users>>> findUsers();
+  Stream<Either<Failures, List<Users>>> findUsers({required String therapistName});
 }
 
 class FindUsersRemoteDataSourceImpl implements FindUsersRemoteDataSource {
@@ -15,10 +15,11 @@ class FindUsersRemoteDataSourceImpl implements FindUsersRemoteDataSource {
   FindUsersRemoteDataSourceImpl(this.firestore);
 
   @override
-  Stream<Either<Failures, List<Users>>> findUsers() {
+  Stream<Either<Failures, List<Users>>> findUsers({required String therapistName}) {
     try {
       return firestore.collection(RemoteDataSourceHelper.accountCollectionName)
-          .where('role', isEqualTo: 'user') 
+          .where('role', isEqualTo: 'user')
+          .where('therapistName', isEqualTo: therapistName) 
           .snapshots()
           .map<Either<Failures, List<Users>>>((snapshot) { 
         final users = snapshot.docs.map((doc) {

@@ -25,7 +25,7 @@ class TherapistHomeRepositoryImpl implements TherapistHomeRepository {
   }
 
   @override
-  Stream<Either<Failures, List<Users>>> loadUsers() {
-    return findUsersRemoteDataSource.findUsers();
+  Stream<Either<Failures, List<Users>>> loadUsers({required String therapistName}) {
+    return findUsersRemoteDataSource.findUsers(therapistName: therapistName);
   }
 }

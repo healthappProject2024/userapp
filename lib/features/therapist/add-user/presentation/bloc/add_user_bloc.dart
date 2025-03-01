@@ -20,6 +20,7 @@ class AddUserBloc extends Bloc<AddUserEvent, AddUserState> {
       email: event.email,
       password: event.password,
       imageFile: event.imagePath,
+      therapisName: event.therapisName,
     );
 
     result.fold(

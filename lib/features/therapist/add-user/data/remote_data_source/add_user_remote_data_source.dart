@@ -11,6 +11,7 @@ abstract interface class AddUserRemoteDataSource {
     required String email,
     required String password,
     required File imageFile,
+    required String therapisName,
   });
 }
 
@@ -33,6 +34,7 @@ Future<bool> adduser({
   required String email,
   required String password,
   required File imageFile,
+  required String therapisName,
 }) async {
   try {
     UserCredential credential = await _auth.createUserWithEmailAndPassword(
@@ -50,6 +52,7 @@ Future<bool> adduser({
       name: name,
       email: email,
       imageUrl: imageUrl,
+      therapisName: therapisName,
     );
 
     await _db

@@ -8,5 +8,6 @@ abstract interface class AddUserRepo {
     required String email,
     required String password,
     required File imageFile,
+        required String therapisName,
   });
 }

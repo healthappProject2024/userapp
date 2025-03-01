@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:userapp/config/route/route_name.dart';
 import 'package:userapp/features/therapist/therapist_profile_page/presentation/bloc/profile_bloc.dart';
 import 'package:userapp/features/therapist/therapist_profile_page/presentation/widget/profile_base.dart';
 import 'package:userapp/utils/resources/widgets/common_appbar.dart';
@@ -29,7 +30,13 @@ class TherapistProfilePage extends StatelessWidget {
               heading: "LogOut",
               content: "Are you sure you want to log out?",
               purpose: "LogOut",
-              okPressed: () {},
+              okPressed: () async {
+                Navigator.of(context, rootNavigator: true)
+                    .pushNamedAndRemoveUntil(
+                  RouteName.loginDecision,
+                  (route) => false, 
+                );
+              },
             );
           }
         },

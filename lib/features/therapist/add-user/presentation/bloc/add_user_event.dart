@@ -8,11 +8,13 @@ class AdduserTapped extends AddUserEvent {
   final String email;
   final String password;
   final File imagePath;
+  final String therapisName;
 
   AdduserTapped({
     required this.name,
     required this.email,
     required this.imagePath,
     required this.password,
+    required this.therapisName,
   });
 }

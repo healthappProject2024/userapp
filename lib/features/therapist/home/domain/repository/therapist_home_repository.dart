@@ -4,5 +4,5 @@ import 'package:userapp/utils/resources/error/failures.dart';
 
 abstract interface class TherapistHomeRepository {
   Future<String> getTherapistName();
-  Stream<Either<Failures, List<Users>>> loadUsers();
+  Stream<Either<Failures, List<Users>>> loadUsers({required String therapistName});
 }

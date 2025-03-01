@@ -54,6 +54,11 @@ class DecisionMaker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+       final loginCubit = context.read<LoginStatusCubit>();
+  
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    loginCubit.loadLoginStatus();
+  });
     return Scaffold(
       body: BlocBuilder<OnboardingCubit, OnboardingState>(
         builder: (ctx, onboardingState) {

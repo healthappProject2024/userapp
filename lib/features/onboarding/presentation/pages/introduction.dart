@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:userapp/config/route/route_name.dart';
 import 'package:userapp/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:userapp/features/onboarding/presentation/pages/widget/introduction_page_button.dart';
@@ -42,11 +43,7 @@ class Introduction extends StatelessWidget {
       floatingActionButton: IntroductionPageButton(
         onPressed: () {
            context.read<OnboardingCubit>().completeOnboarding();
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            RouteName.loginDecision,
-            (Route<dynamic> route) => false,
-          );
+          context.goNamed('loginDecision');
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,

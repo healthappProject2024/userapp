@@ -22,7 +22,7 @@ String? name;
       emit(HomeLoading());
       final therapistName = await getTherapistNameUseCase();
       await emit.forEach(
-        loadUsersUseCase(),
+        loadUsersUseCase(therapistName: therapistName),
         onData: (Either<Failures, List<Users>> result) {
           return result.fold(
             (failure) => TherapistHomeError(failure),

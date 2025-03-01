@@ -12,7 +12,11 @@ class LoginStatusCubit extends Cubit<LoginStatusState> {
   LoginStatusCubit({
     required this.checkLoginStatus,
     required this.saveLoginStatus,
-  }) : super(LoginStatusInitial());
+  }) : super(LoginStatusInitial()){
+    loadLoginStatus();
+  }
+
+
 
   Future<void> loadLoginStatus() async {
     try {

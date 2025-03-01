@@ -17,6 +17,12 @@ import 'package:userapp/features/auth/therapist/data/repository/therapist_login_
 import 'package:userapp/features/auth/therapist/domain/usecase/save_therapist_data.dart';
 import 'package:userapp/features/auth/therapist/domain/usecase/threapist_login.dart';
 import 'package:userapp/features/auth/therapist/presentation/bloc/therapist_login_bloc.dart';
+import 'package:userapp/features/auth/user/data/data_source/local/user_local_data_source.dart';
+import 'package:userapp/features/auth/user/data/data_source/remote/user_login_remote_data_source.dart';
+import 'package:userapp/features/auth/user/data/repository/user_login_repository_impl.dart';
+import 'package:userapp/features/auth/user/domain/usecase/save_user_data.dart';
+import 'package:userapp/features/auth/user/domain/usecase/user_login.dart';
+import 'package:userapp/features/auth/user/presentation/bloc/user_login_bloc.dart';
 import 'package:userapp/features/onboarding/data/local_data_source/local_data_source.dart';
 import 'package:userapp/features/onboarding/data/repository/onboarding_repository_impl.dart';
 import 'package:userapp/features/onboarding/domain/usecase/onboarding_usecase.dart';
@@ -114,6 +120,26 @@ void main() async {
         ),
         BlocProvider(
           create: (ctx) => ShowPasswordCubit(),
+        ),
+        BlocProvider(
+          create: (ctx) => UserLoginBloc(
+            userLoginUsecase: UserLoginUsecase(
+              UserLoginRepositoryImpl(
+                UserLocalDataSourceImpl(
+                  LocalDataService(prefs: pref),
+                ),
+                UserLoginRemoteDataSourceImpl(auth, db),
+              ),
+            ),
+            saveUserDataUsecase: SaveUserDataUsecase(
+              UserLoginRepositoryImpl(
+                UserLocalDataSourceImpl(
+                  LocalDataService(prefs: pref),
+                ),
+                UserLoginRemoteDataSourceImpl(auth, db),
+              ),
+            ),
+          ),
         ),
         BlocProvider(
           create: (ctx) => TherapistLoginBloc(

@@ -8,7 +8,8 @@ import 'package:userapp/features/therapist/add-user/presentation/widget/photo_bo
 import 'package:userapp/utils/resources/widgets/commone_dialouge_box.dart';
 
 class AddUser extends StatefulWidget {
-  const AddUser({super.key});
+  final String therapisName;
+  const AddUser({super.key, required this.therapisName});
 
   @override
   State<AddUser> createState() => _AddUserState();
@@ -19,7 +20,6 @@ class _AddUserState extends State<AddUser> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>(); 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,6 +113,7 @@ class _AddUserState extends State<AddUser> {
                                     email: _emailController.text.trim(),
                                     password: _passwordController.text.trim(),
                                     imagePath: state.imagePath,
+                                    therapisName: widget.therapisName,
                                   ),
                                 );
                               } else {

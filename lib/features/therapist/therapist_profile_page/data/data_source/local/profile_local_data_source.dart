@@ -28,15 +28,25 @@ class ProfileLocalDataSourceImpl implements ProfileLocalDataSource {
       return null;
     }
   }
-  
+
   @override
   Future<void> clearLocalData() async {
-    try{
+    try {
       await localDataService.clearData(SharedpreferenceHelper.loginStatus);
+      print("login status cleared");
+      print(
+          "After clearing, loginStatus: ${localDataService.getBoolValue(SharedpreferenceHelper.loginStatus)}");
+
       await localDataService.clearData(SharedpreferenceHelper.role);
+      print("role cleared");
+            print(
+          "After clearing, role: ${localDataService.getString(SharedpreferenceHelper.role)}");
       await localDataService.clearData(SharedpreferenceHelper.userData);
-    }catch(e){
-       print("Error clearing local data: $e");
+      print("user data cleared");
+                  print(
+          "After clearing, user data: ${localDataService.getString(SharedpreferenceHelper.userData)}");
+    } catch (e) {
+      print("Error clearing local data: $e");
     }
   }
 }

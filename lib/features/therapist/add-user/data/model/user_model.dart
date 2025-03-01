@@ -5,15 +5,16 @@ class UserModel extends User {
     required super.name,
     required super.email,
     required super.imageUrl,
+    required super.therapisName,
   });
 
-  Map<String, dynamic> toFirestore(){
+  Map<String, dynamic> toFirestore() {
     return {
-      'name' : name,
-      "email" : email,
-      "profileurl" : imageUrl,
-      'role' : "user",
+      'name': name,
+      "email": email,
+      "profileurl": imageUrl,
+      'role': "user",
+      "therapistName" : therapisName,
     };
   }
-
 }
