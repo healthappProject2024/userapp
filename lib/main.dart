@@ -71,7 +71,7 @@ void main() async {
             onboardingUseCase: OnboardingUseCase(
               onboardingRepository: OnboardingRepositoryImpl(
                 localDataSource: LocalDataSourceImpl(
-                  localDataService: LocalDataService(prefs: pref),
+                  localDataService: LocalDataService(prefs: pref)
                 ),
               ),
             ),
