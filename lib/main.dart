@@ -91,7 +91,7 @@ void main() async {
             ),
             loadUsersUseCase: LoadUsersUseCase(
               TherapistHomeRepositoryImpl(
-                findUsersRemoteDataSource: FindUsersRemoteDataSourceImpl(db),
+                findUsersRemoteDataSource: FindUsersRemoteDataSourceImpl(db)
                 getTherapistNameLocalDataSource:
                     GetTherapistNameLocalDataSourceImpl(
                   LocalDataService(prefs: pref),
