@@ -105,7 +105,7 @@ void main() async {
             checkLoginStatus: CheckLoginStatus(
               IsLoggedinRepositoryImpl(
                 LoginStatusLocalDataSourceImpl(
-                  LocalDataService(prefs: pref),
+                  LocalDataService(prefs: pref)
                 ),
               ),
             ),
