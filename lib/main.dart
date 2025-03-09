@@ -94,7 +94,7 @@ void main() async {
                 findUsersRemoteDataSource: FindUsersRemoteDataSourceImpl(db)
                 getTherapistNameLocalDataSource:
                     GetTherapistNameLocalDataSourceImpl(
-                  LocalDataService(prefs: pref),
+                  LocalDataService(prefs: pref)
                 ),
               ),
             ),
