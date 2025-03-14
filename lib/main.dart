@@ -112,7 +112,7 @@ void main() async {
             saveLoginStatus: SaveLoginStatus(
               IsLoggedinRepositoryImpl(
                 LoginStatusLocalDataSourceImpl(
-                  LocalDataService(prefs: pref),
+                  LocalDataService(prefs: pref)
                 ),
               ),
             ),
