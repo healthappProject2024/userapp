@@ -82,7 +82,7 @@ void main() async {
           create: (context) => TherapistHomeBloc(
             getTherapistNameUseCase: GetTherapistNameUseCase(
               TherapistHomeRepositoryImpl(
-                findUsersRemoteDataSource: FindUsersRemoteDataSourceImpl(db),
+                findUsersRemoteDataSource: FindUsersRemoteDataSourceImpl(db)
                 getTherapistNameLocalDataSource:
                     GetTherapistNameLocalDataSourceImpl(
                   LocalDataService(prefs: pref)
