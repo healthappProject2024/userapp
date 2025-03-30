@@ -164,7 +164,7 @@ void main() async {
                 ),
                 therapistLocalDataSource: TherapistLocalDataSourceImpl(
                   LocalDataService(
-                    prefs: pref,
+                    prefs: pref
                   ),
                 ),
               ),
