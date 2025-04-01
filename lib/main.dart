@@ -119,7 +119,7 @@ void main() async {
           )..loadLoginStatus(),
         ),
         BlocProvider(
-          create: (ctx) => ShowPasswordCubit(),
+          create: (ctx) => ShowPasswordCubit()
         ),
         BlocProvider(
           create: (ctx) => UserLoginBloc(
