@@ -136,7 +136,7 @@ void main() async {
                 UserLocalDataSourceImpl(
                   LocalDataService(prefs: pref),
                 ),
-                UserLoginRemoteDataSourceImpl(auth, db),
+                UserLoginRemoteDataSourceImpl(auth, db)
               ),
             ),
           ),
